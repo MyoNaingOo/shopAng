@@ -1,0 +1,12 @@
+
+<ngb-alert class="alert alert-info" role="alert" *ngIf="message">{{ message }}</ngb-alert>
+
+<div class="container-fluid p-5">
+
+    <form #f="ngForm" (submit)="change(f)" >
+        <label for="name" >Name for change</label >
+        <input type="namw" class="form-control" name="name" #name="ngModel" placeholder="Enter your went name" ngModel />
+    <button class="btn btn-primary mt-5 float-end col-2">Post</button>
+    </form>
+
+</div>

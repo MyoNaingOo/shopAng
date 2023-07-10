@@ -1,0 +1,19 @@
+
+<ngb-alert  [class]="'alert '+ massagebg? ' alert-success' : ' alert-danger'" role="alert" *ngIf="massage">{{ massage }}</ngb-alert >
+
+<div class="container-fuld m-sm-5 m-1 row">
+  <form #f="ngForm" (submit)="login(f)">
+    <h1 class="text-center">login Form</h1>
+    <input type="email" class="form-control mb-5" name="email" #username="ngModel" ngModel>
+    <div class="input-group mb-3">
+      <input [type]="passwordshow? 'text' : 'password'"  class="form-control" name="password" #password="ngModel" ngModel>
+      <span (click)="passwordeye()" class="input-group-text">
+        <fa-icon [className]="passwordshow? 'd-inline' : 'd-none'" [icon]="eye"></fa-icon>
+        <fa-icon [className]="passwordshow? 'd-none' : 'd-inline'"  [icon]="eye_slash"></fa-icon>
+      </span>
+    </div>
+    <a class="float-start" routerLink="../register">Create new Account</a>
+
+    <button class="btn btn-primary float-end">Login</button>
+  </form>
+</div>

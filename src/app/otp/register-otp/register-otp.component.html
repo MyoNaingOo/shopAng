@@ -1,0 +1,16 @@
+
+
+<div class="container-fuld m-5 row">
+    <form #f="ngForm" (submit)="regotp(f)">
+      <h1 class="text-center">Gmail check</h1>
+      <div class="d-flex justify-contect-center">
+
+        <p class="bordershoadow px-5 mx-3"> {{ showemail }} </p>
+      </div>
+      <input type="tel" class="form-control mb-5" name="otp" #otp="ngModel" ngModel>
+
+
+      <button class="btn btn-primary float-end col-2">Send</button>
+    </form>
+
+  </div>

@@ -1,0 +1,68 @@
+<!-- addproduct form -->
+
+<div class="container-fluid  p-md-5">
+
+  <ngb-alert class="alert alert-info" role="alert" *ngIf="message">{{ message }}</ngb-alert>
+
+  <form #f="ngForm" (submit)="addpro(f)" enctype="multipart/form-data">
+    <h1 class="text-center">Add product</h1>
+    <input type="name" class="form-control mb-5" name="name" #name="ngModel" placeholder="Enter product name" ngModel>
+    <label for="post_text">Limit 2000 word.You have {{ post_textl?.length }}</label>
+    <textarea class="form-control mb-5" name="post_text" #post_text="ngModel" [(ngModel)]="post_textl" maxlength="2000"
+      placeholder="Enter product text" ngModel></textarea>
+    <label for="file" class="form-control bg-warning mb-5">please image chose</label>
+    <input type="file" accept="image/jpeg ,image/jpg,image/png" (change)="onFileSelect($event)"
+      class="form-control mb-5 d-none" name="file" id="file" #file="ngModel" ngModel multiple>
+
+    <div><img *ngFor="let url of urls" [src]="url" alt=""></div>
+
+    <!-- <div class="row "> -->
+      <label for="change">Cetegogy</label>
+      <select name="category" class=" bg-warning mx-1 form-select w-25 mb-5" #category="ngModel" ngModel>
+        <option>Phone</option>
+        <option>Laptop</option>
+        <option>Electronic</option>
+        <option>Tools</option>
+        <option>Fastion</option>
+      </select>
+
+      <label for="brand">Brand Name</label>
+      <select name="brand" class=" bg-warning  mx-1 form-select w-25 mb-5" #brand="ngModel" ngModel>
+        <option>Xaomi</option>
+        <option>Huawei</option>
+        <option>Sunsaung</option>
+        <option>Apple</option>
+        <option>Hp</option>
+
+      </select>
+
+      <div class="size d-flex">
+        <div *ngFor="let option of options">
+          <div (click)="setsize(option)" [class]="option.selected? 'btn btn-danger mx-1 mb-2' : 'btn btn-outline-danger mx-1 mb-2' ">{{ option.label }}
+          </div>
+        </div>
+
+      </div>
+
+      <input type="color" name="color" id="color" class="color-btn" (change)="setcolor($event)" />
+
+
+      <div class="color-wall size">
+        <div *ngFor="let color of colors">
+          <div class=" text-center color-card " >
+            <div [style]=" 'background-color:'+ color +';' " class="color-show text-center "></div>
+            <button type="button" class="btn btn-danger" (click)="removecolor(color)">Remove</button>
+          </div>
+        </div>
+
+      </div>
+
+
+      <input type="number" class="form-control mb-5 w-50" id="price" name="price"
+        placeholder="Enter price is Myanmar Kyate" #price="ngModel" min="1" ngModel>
+
+      <button class="btn btn-primary float-end col-2  mb-5">add</button>
+
+    <!-- </div> -->
+  </form>
+</div>

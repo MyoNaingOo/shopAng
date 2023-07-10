@@ -1,0 +1,22 @@
+<div class="row space-around">
+  <div class="products-wall col-md-3 col-6" *ngFor="let product of getpros">
+
+    <div [routerLink]="producturl + product.id">
+      <div class="bordershoadow product-image  text-center pro-wall " *ngIf="product.post_img">
+        <img [src]="imageurl + product.post_img[0]" />
+        <p>{{ product.name }}</p>
+        <p *ngIf="product.price_discount== 0">MMK-{{ product.price_original }}</p>
+        <del *ngIf="product.price_discount!= 0" class="text-danger">MMK-{{ product.price_original }}</del>
+        <p *ngIf="product.price_discount!= 0">Disc MMK- {{ product.price_discount }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+    (pageChange)="refreshCountries()" [boundaryLinks]="true">
+  </ngb-pagination>
+</div>
+
+

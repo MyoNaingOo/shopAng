@@ -1,0 +1,33 @@
+
+<div class="container-fuld m-5">
+  <form #f="ngForm" (submit)="register(f)">
+    <h1 class="text-center">login Form</h1>
+    <input type="namme" class="form-control mb-5" name="name" id="name" #name="ngModel" ngModel placeholder="name">
+    <input type="email" class="form-control mb-5" name="email" #email="ngModel" ngModel placeholder="email">
+
+    <input type="text" class="form-control mb-5" name="address" #address="ngModel" ngModel placeholder="address">
+
+    <div class="input-group mb-3">
+      <input [type]="passwordshow?'text' : 'password'" class="form-control" name="password" #password="ngModel" ngModel
+        placeholder="password">
+      <span (click)="passwordeye()" class="input-group-text">
+        <fa-icon [className]="passwordshow? 'd-inline' : 'd-none'" [icon]="eye"></fa-icon>
+        <fa-icon [className]="passwordshow? 'd-none' : 'd-inline'"  [icon]="eye_slash"></fa-icon>
+      </span>
+    </div>
+
+    <div class="input-group mb-3">
+      <input [type]="passwordshow? 'text' : 'password'" class="form-control" name="cpassword" #cpassword="ngModel"
+        ngModel placeholder="Confine password">
+        <span (click)="passwordeye()" class="input-group-text">
+          <fa-icon [className]="passwordshow? 'd-inline' : 'd-none'" [icon]="eye"></fa-icon>
+          <fa-icon [className]="passwordshow? 'd-none' : 'd-inline'"  [icon]="eye_slash"></fa-icon>
+        </span>
+    </div>
+    <a class="float-start" routerLink="../login">You have Alwedy Account</a>
+
+    <button class="btn btn-primary float-end col-2">Register</button>
+  </form>
+
+
+</div>

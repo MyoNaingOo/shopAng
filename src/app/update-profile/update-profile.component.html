@@ -1,0 +1,22 @@
+
+
+
+
+<div [class]="'alert '+ messagebg? ' alert-success' : ' alert-danger'" role="alert" *ngIf="message">{{ message }}</div>
+<ngb-alert [class]="'alert '+ messagebg? ' alert-success' : ' alert-danger'" role="alert" *ngIf="message">{{ message }}</ngb-alert>
+
+
+<div class="container-fluid p-5">
+
+    <form #f="ngForm" (submit)="changeimage(f)" enctype="multipart/form-data">
+      <label for="file" class="form-control bg-warning mb-5">please image chose</label>
+        <input (change)="onFileSelect($event)" type="file" id="file" class="form-control d-none mb-5" name="file" #file="ngModel" ngModel/>
+        <button class="btn btn-primary float-end col-2">Post</button>
+
+    </form>
+
+
+
+    <img [src]="url" class="profileimg"  alt="">
+
+</div>

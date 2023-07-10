@@ -1,0 +1,106 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap'
+
+:root
+    --dark: ##0D0C0C
+    --light: ##FFFFFF
+    --darks: rgba(0,0,0,0.3)
+    --lights: rgba(255, 255, 255, 1)
+
+
+.darkmode
+    --light: #0D0C0C
+    --dark: #FFFFFF
+    --lights: rgba(0,0,0,0.3)
+    --darks: rgba(167, 24, 24, 0.8)
+
+
+$light: var(--light)
+$dark: var(--dark)
+$darks: var(--darks)
+$lights: var(--lights)
+
+
+
+
+
+body
+    background: $light !important
+    text-align-items: center
+    justify-content: center
+    display: block
+    box-sizing: border-box
+
+.my-bg-light
+    background: $light
+
+
+.my-bg-dark
+    background: $dark
+
+
+
+
+.mytext-light
+    background: $light
+
+
+.mytext-dark
+    background: $dark
+
+.d-none
+    display: none
+
+.carousel-control-next-icon, .carousel-control-prev-icon
+    background: #000
+    border-radius: 10px
+    color: #fff
+
+
+
+.bordershoadow
+    border-radius: 15px
+    box-shadow: -7px 7px 10px $lights,7px 7px 10px $darks
+    margin: 15px
+
+
+.space-between
+    display: flex
+    justify-content: space-between
+
+.space-around
+    display: flex
+    justify-content: space-around
+
+
+.center
+    justify-content: center
+    text-align: center
+    display: flex
+
+.justify-contect-center
+  justify-content: center
+
+.nav-item>.nav-link
+    display: flex
+
+
+h1,h2,h3,h4,h5,h6,span,div,label,p,btn-close
+    color: $dark
+
+
+.offcanvas-body>.navbar-nav>.nav-item
+  background: #db4040
+  width: 50%
+  border-radius: 20px
+  text-align: center
+  color: #fff
+  margin-top: 10px
+
+
+@media (max-width: 1000px)
+  .nav-item>.nav-link
+    font-size: 13px
+

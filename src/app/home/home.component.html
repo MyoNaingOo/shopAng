@@ -1,0 +1,20 @@
+
+<div class="container-fluid">
+    <div>
+      <form #f="ngForm" (submit)="findpro(f)" class="row mt-3 space-around">
+
+        <input type="search" name="find" class="col-8 find border-round" id="find" #find="ngModel" ngModel>
+
+        <button class="btn btn-primary col-2">search</button>
+      </form>
+
+    </div>
+
+  </div>
+
+
+<p class="text-center">Wellcome our shop</p>
+
+
+
+<app-products></app-products>

@@ -1,0 +1,37 @@
+<h1 class="text-center">Order Deails</h1>
+<div  *ngIf="orderdata?.product" class="p-5 card m-5" >
+
+
+
+  <div class="container-fluid imgs d-flex ">
+
+    <div *ngFor="let image of orderdata?.product?.post_img" class="pro_img">
+      <img [src]="imageurl+ image" alt="">
+    </div>
+  </div>
+  <h4 class="" >Product Name - {{ orderdata?.product?.name }} </h4>
+
+  <p>Order bulk - {{ orderdata?.order_bulk }}</p>
+  <p>Ordered Product size -<strong> {{ orderdata?.size }}  </strong> </p>
+
+  <h5>Color</h5>
+
+   <div *ngIf="orderdata?.color" [style]=" 'background-color:'+ orderdata?.color " class="color-show text-center "></div>
+
+  <h4>From</h4>
+  <p>shop - {{ orderdata?.product?.owner.name}}</p>
+  <p>shop Address - {{ orderdata?.product?.owner.address}}</p>
+
+  <h4>To</h4>
+  <p>comsumer - {{ orderdata?.user.name }} </p>
+  <p>comsumer Address- {{ orderdata?.user.address }} </p>
+  <div class="row">
+
+      <button [class]=" orderdata?.accept ? 'btn btn-success float-start w-25 mx-4' : 'btn btn-danger w-25 mx-4 float-start' " (click)="accept(orderdata)" >Accept </button>
+
+      <button class="btn btn-danger w-25 float-end mx-4" (click)="deleteOrder(orderdata?.id)" >Delete</button>
+  </div>
+
+</div>
+
+<!-- <button (click)="accept(o)" class="mt-4" [class]="o.accept?' btn btn-success col-12' : 'btn btn-warning col-12'">{{ o.accept? 'Accept' : 'Accept waiting' }}</button> -->

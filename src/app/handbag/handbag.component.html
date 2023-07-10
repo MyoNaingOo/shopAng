@@ -1,0 +1,68 @@
+
+<ngb-alert class="alert alert-info" role="alert" *ngIf="message">{{ message }}</ngb-alert>
+
+<div class="container-fluid">
+
+    <div *ngFor="let c of cards" >
+
+        <div class="bordershoadow post-wall my-4 px-4 row" *ngIf="c.product">
+            <div class="product-image text-center justify-contect-center col-12 col-md-5"  *ngIf="c.product.post_img">
+                <img [src]="imageurl+c.product.post_img[0]">
+            </div>
+
+
+
+            <div class="col-12 col-md-7">
+                <h4>{{ c.product.name }}</h4>
+                <p class="container" >{{ c.product.post_text }}</p>
+                <p>{{ c.product.date }}</p>
+                <p class="mb-3">shop {{ c.product.owner.name }}</p>
+                <p>product price-{{ c.product.price_original }}</p>
+
+                <p >Total price -{{ price(number,c.product) }}</p>
+
+                <span class="bulk_number" (click)="numberm()">-</span>
+                <span class="bulk_number">{{ number }}</span>
+                <span class="bulk_number" (click)="numberp()">+</span>
+
+
+                    <form #f="ngForm" (ngSubmit)="boughtpro(f)">
+
+                      <input type="number" class="d-none" [ngModel]="c.product.id" name="product_id" id="product_id" #product_id="ngModel" ngModel>
+                      <input type="number" class="d-none" [ngModel]="number" name="bulk" id="bulk" #bulk="ngModel" ngModel>
+                      <input type="number" class="d-none" [ngModel]="price(number,c.product)" name="payment_price" id="payment_price" #payment_price="ngModel" ngModel>
+
+                      <div class="color-wall">
+                        <div *ngFor="let color of c.product.color"  >
+
+                          <div (click)="setcolor(color)"  [style]=" 'background-color:'+ color +';' " class="color-show text-center "></div>
+
+                        </div>
+
+
+                      </div>
+
+
+
+
+
+
+
+                      <select name="size" class=" bg-warning  mt-2 form-select w-25 " #size="ngModel" ngModel *ngIf="c.product.size[0]" >
+
+                        <option *ngFor="let item of c.product.size"> {{item }} </option>
+
+
+                      </select>
+
+                      <button  class="btn btn-success mt-2 float-start">Buy</button>
+                    </form>
+
+                <button (click)="deletecard(c.productCard?.id)" class="btn btn-danger float-end">Delete</button>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>

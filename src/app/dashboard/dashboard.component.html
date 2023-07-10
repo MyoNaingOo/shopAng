@@ -1,0 +1,65 @@
+
+
+<div class="chart_auto">
+  <canvas id="linec"></canvas>
+</div>
+
+
+
+
+
+<table class="table table-hover border  my-5 mx-3">
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Product Name</th>
+      <th>Bulk</th>
+      <th>Price</th>
+      <th>Customer</th>
+      <th>Date</th>
+      <th>Details</th>
+
+    </tr>
+  </thead>
+  <tbody *ngFor="let o of orders,index as i" >
+    <tr *ngIf="o.product">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ o.product.name }}</td>
+      <td>{{  o.order_bulk}}</td>
+      <td>{{  o.payment_price }}</td>
+      <td>{{ o.user.name }}</td>
+      <td>{{ o.order_date }}</td>
+      <td [routerLink]="'../order/'+o.id" >Go To</td>
+
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<!--
+<div class="container-fluid">
+
+    <div *ngFor="let o of orders" >
+
+        <div class="bordershoadow post-wall row mt-4" *ngIf="o.product">
+            <div class="product-image col-4">
+                <img [src]="imageurl+o.product.post_img[0]">
+            </div>
+
+
+
+            <div class="col-6">
+                <h4>{{ o.product.name }}</h4>
+                <p>Bulk - {{ o.order_bulk }}</p>
+                <p>Payment price give - {{ o.payment_price }}</p>
+
+                <p>Buy Date - {{ o.order_date }}</p>
+                <p>consumer - {{ o.user.name }}</p>
+            </div>
+
+        </div>
+    </div>
+
+</div> -->

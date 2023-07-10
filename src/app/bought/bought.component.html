@@ -1,0 +1,33 @@
+
+<div class="alert alert-success" role="alert" *ngIf="message">{{ message.message }}</div>
+
+
+<div class="container-fluid">
+
+    <div *ngFor="let o of orders" >
+
+        <div class="bordershoadow post-wall row" *ngIf="o.product">
+            <div class="product-image text-center justify-contect-center col-12 col-md-5" *ngIf="o.product.post_img">
+                <img [src]="imageurl+o.product.post_img[0]">
+            </div>
+
+
+
+            <div class="col-12 col-md-7">
+                <h4>{{ o.product.name }}</h4>
+                <p>Bulk - {{ o.order_bulk }}</p>
+                <p>Buy Date - {{ o.order_date }}</p>
+                <p class="mb-1">shop {{ o.product.owner.name }}</p>
+                <a  class="nav-link" [routerLink]="'../order/'+o.id" >Go To</a>
+
+
+                <div class="mt-4" [class]="o.accept?' btn btn-success float-start' : 'btn btn-warning float-start' " >{{ o.accept? 'Accept':'Accept waiting' }}</div>
+
+                <button type="button" class="btn btn-danger float-end" (click)="deleteOrder(o.id)" >Delete</button>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

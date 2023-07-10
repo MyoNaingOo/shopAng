@@ -1,0 +1,80 @@
+<ngb-alert class="alert alert-info" role="alert" *ngIf="message">{{ message }}</ngb-alert>
+
+
+<div class="row space-around" >
+
+    <div class="product-image-wall my-bg-light  col-md-4 ">
+
+        <ngb-carousel *ngIf="product?.post_img" >
+            <ng-template *ngFor="let image of product?.post_img" ngbSlide>
+
+
+                <div class="products-images">
+                    <img [src]="imageurl+image" alt="">
+                </div>
+                <div class="carousel-caption">
+                    <h3>{{ product?.name }}</h3>
+                </div>
+            </ng-template>
+
+
+        </ngb-carousel>
+    </div>
+
+<div class="row col-md-6">
+    <div class="my-bg-light product-desc ">
+        <h3>{{ product?.name }}</h3>
+        <h4>{{ product?.brand}}</h4>
+        <p>{{ product?.post_text }}</p>
+        <p *ngIf="product?.price_discount== 0"  >MMK-{{ product?.price_original }}</p>
+        <del *ngIf="product?.price_discount!= 0" class="text-danger"  >MMK-{{ product?.price_original }}</del>
+        <p *ngIf="product?.price_discount!= 0" >Disc MMK- {{ product?.price_discount }}</p>
+
+
+        <div class="color-wall">
+        <div *ngFor="let color of product?.color"  >
+
+          <div  [style]=" 'background-color:'+ color +';' " class="color-show text-center "></div>
+
+        </div>
+        </div>
+
+        <div class="size d-flex">
+          <div *ngFor="let option of product?.size">
+            <div class="btn btn-size">{{ option }}
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="buy my-bg-light">
+        <form #f="ngForm"  (submit)="addcard(f)">
+
+            <input type="number" class="d-none" name="product_id" id="product_id" [ngModel]="product?.id" #product_id="ngModel" ngModel />
+            <button  class="btn btn-primary float-end mt-3">Add to card</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<div class="row space-around">
+      <div class="products-wall col-md-3 col-6" *ngFor="let product of products">
+
+        <a [href]="'../product/'+ product.id" class="nav-link ">
+          <div class="bordershoadow product-image  text-center pro-wall" *ngIf="product.post_img">
+            <img [src]="imageurl + product.post_img[0]" />
+            <p>{{ product.name }}</p>
+            <p *ngIf="product.price_discount== 0">MMK-{{ product.price_original }}</p>
+            <del *ngIf="product.price_discount!= 0" class="text-danger">MMK-{{ product.price_original }}</del>
+            <p *ngIf="product.price_discount!= 0">Disc MMK- {{ product.price_discount }}</p>
+
+        </div>
+      </a>
+      </div>
+</div>

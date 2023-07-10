@@ -1,0 +1,71 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-danger">
+
+  <div class="container-fluid"><a href="#" class="navbar-brand">MNO SHOP</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active d-none d-sm-inline"><a routerLink="" class="nav-link"><fa-icon [icon]="faHome"></fa-icon>Home</a></li>
+      <li class="nav-item d-none d-sm-inline" *ngIf="username"><a routerLink="bought" class="nav-link">Bought</a></li>
+      <li class="nav-item d-none d-sm-inline" *ngIf="username"><a routerLink="handbag" class="nav-link">Handbag</a></li>
+      <li class="nav-item d-none d-sm-inline" *ngIf="username"><a routerLink="dash" class="nav-link">DashBoard</a></li>
+      <li class="nav-item d-none d-sm-inline" *ngIf="username"><a routerLink="menu" class="nav-link">Menu</a></li>
+
+      <div ngbDropdown class="nav-item d-none d-sm-inline">
+        <button ngbDropdownToggle class="btn nav-link"><fa-icon [icon]="faUser"></fa-icon>{{ loginuser() }}</button>
+        <div ngbDropdownMenu>
+          <li *ngIf="username"><a ngbDropdownItem routerLink="post">{{ username }}</a></li>
+          <li *ngIf="!username"><a ngbDropdownItem routerLink="login"><fa-icon [icon]="fakey"></fa-icon>Login</a></li>
+          <li *ngIf="!username"><a ngbDropdownItem routerLink="register"><fa-icon
+                [icon]="faregister"></fa-icon>register</a></li>
+          <li *ngIf="username"><a ngbDropdownItem (click)="logout()">logout</a></li>
+        </div>
+      </div>
+      <li class="nav-item d-none d-sm-inline" ><a (click)="dark()" class="nav-link"><fa-icon [icon]="dark_light_icon"></fa-icon></a></li>
+
+      <button class="btn d-inline d-sm-none" (click)="open(content)">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+
+    </ul>
+  </div>
+</nav>
+
+<ng-template #content let-offcanvas >
+  <div class="offcanvas-header my-bg-light">
+    <h4 class="offcanvas-title" id="offcanvas-basic-title">Telecon  Bill</h4>
+    <button type="button" class="btn-close " aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+  <div class="offcanvas-body my-bg-light">
+    <ul class="navbar-nav">
+      <li class="nav-item active"><a routerLink="" class="nav-link"><fa-icon
+            [icon]="faHome"></fa-icon> Home</a></li>
+      <li class="nav-item"><a routerLink="bought" class="nav-link">Bought</a></li>
+      <li class="nav-item"><a routerLink="handbag" class="nav-link">Handbag</a></li>
+      <li class="nav-item"><a routerLink="dash" class="nav-link">DashBoard</a></li>
+      <li class="nav-item"><a routerLink="menu" class="nav-link">Menu</a></li>
+
+    <div ngbDropdown class="nav-item text-center" >
+
+      <button ngbDropdownToggle class="btn nav-link pl-2"><fa-icon [icon]="faUser"></fa-icon>{{ loginuser() }}</button>
+      <div ngbDropdownMenu>
+        <li *ngIf="username"><a ngbDropdownItem routerLink="post">{{ username }}</a> </li>
+        <li *ngIf="!username"><a ngbDropdownItem routerLink="login"  ><fa-icon [icon]="fakey"></fa-icon>Login</a></li>
+        <li *ngIf="!username"><a ngbDropdownItem routerLink="register"><fa-icon
+              [icon]="faregister"></fa-icon>register</a></li>
+        <li *ngIf="username"><a ngbDropdownItem (click)="logout()">logout</a></li>
+      </div>
+
+    </div>
+
+    <li class="nav-item"><a (click)="dark()" class="nav-link"><fa-icon [icon]="dark_light_icon"></fa-icon></a></li>
+
+  </ul>
+
+
+
+  </div>
+</ng-template>
+
+
+
+<ngb-alert class="alert alert-info" role="alert" *ngIf="message">{{ message }}</ngb-alert>
+
+<router-outlet> </router-outlet>
